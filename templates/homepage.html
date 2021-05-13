@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>easy html</title>
+</head>
+<body>
+
+<!--action="/demoapp/homepage"，这个表示要去urls文件中要找的地址-->
+<form action="/demoapp/homepage" method="get">
+    <!--  {{t}}是从views中取返回的变量的一种方式，t要与views中命名的变量名一致  -->
+    <p>{{ time }}</p>
+    <p>用户名：<input type="text" name="user"/></p>
+    <p>密码：<input type="text" name="password"/></p>
+    <input type="submit" value="登录"/>
+</form>
+
+</body>
+</html>

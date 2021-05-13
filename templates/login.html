@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>easy html</title>
+</head>
+<body>
+
+<p>欢迎王者归来</p>
+<!--template中用标点符号"."，来表示深度查询，"."后面可以跟对象的索引或属性名，下面的l、d都是views中定义的对象名-->
+<p>{{ l.1 }}</p>
+<p>{{ d.sex }}</p>
+<p>{{ d.height }}</p>
+<!--还有下面一些自带过滤函数，更多的去查-->
+<!--首字母大写-->
+<p>{{ cap|capfirst }}</p>
+<!--设置剪切掉某些字符，比如下面将空格剪切掉-->
+<p>{{ cat|cut:' ' }}</p>
+<!--设置时间格式-->
+<p>{{ tt|date:'Y-m-d' }}</p>
+
+</body>
+</html>

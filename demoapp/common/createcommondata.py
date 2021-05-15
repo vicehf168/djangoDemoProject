@@ -68,6 +68,14 @@ class CreateCommonData():
         # 设置Content-Type为请求参数为转换成multipart/form-data之后的类型，否则后端接收判定不是form/data格式
         header['Content-Type'] = params_formdata.content_type
         response_params = requests.post(url, data=params_formdata, headers=header)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] = '反向导入接口： ' + responseMsg
+            return returnParams
+        print('反向导入接口:       ',response_params.text)
 
         '''
         返回参数，用以后面的接口
@@ -86,7 +94,7 @@ class CreateCommonData():
         # 判断小V是否自动审核
         xvAllowAutoConfirm = getVAllowAutoConfirm(xvUserName)['v_AllowAutoConfirm']
 
-        returnParams = {}
+
         returnParams['btoken'] = btoken
         returnParams['taskname'] = params['taskName']
         returnParams['mobile'] = mobile
@@ -140,6 +148,15 @@ class CreateCommonData():
         header['token'] = btoken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
+        print('B验收接口:       ', response_params.text)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] ='B验收接口： ' +  responseMsg
+        return returnParams
+
 
 
     '''
@@ -173,6 +190,15 @@ class CreateCommonData():
         header['token'] = btoken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
+        print('B结算接口:       ', response_params.text)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] ='B申请结算接口： ' +  responseMsg
+        return returnParams
+
 
 
     '''
@@ -200,6 +226,15 @@ class CreateCommonData():
         header['token'] = dvToken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
+        print('大V审核接口:       ', response_params.text)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] ='大V审核成功接口： ' +  responseMsg
+        return returnParams
+
 
 
     '''
@@ -220,9 +255,20 @@ class CreateCommonData():
         header['token'] = dvToken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
-        # response_params.json()直接返回一个dict，而response_params.text返回的是str需要再转换
+        print('大V支付前发短信接口:       ', response_params.text)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] ='大V支付发短信接口： ' +  responseMsg
+            return returnParams
         bizNo = response_params.json()['result']['bizNo']
-        return bizNo
+        returnParams['bizNo'] = bizNo
+        return returnParams
+
+        # response_params.json()直接返回一个dict，而response_params.text返回的是str需要再转换
+
 
 
     '''
@@ -254,6 +300,15 @@ class CreateCommonData():
         header['token'] = dvToken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
+        print('大V支付接口:       ', response_params.text)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] ='大V支付接口： ' +  responseMsg
+        return returnParams
+
 
     '''
     小V端审核成功
@@ -280,3 +335,11 @@ class CreateCommonData():
         header['token'] = xvToken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
+        print('小V审核接口:       ', response_params.text)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] ='小V审核成功接口： ' +  responseMsg
+        return returnParams

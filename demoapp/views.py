@@ -77,6 +77,9 @@ def test(request):
 正向公开抢单任务
 '''
 def forwardPublicTask(request):
+    returnParams = {}
+    returnParams['responseCon'] = 'success'
+
     # 获取输入的用户名
     username = str.strip(request.GET.get('username'))
     # 获取输入的密码
@@ -92,21 +95,30 @@ def forwardPublicTask(request):
     public_TaskType = str.strip(request.GET.get('publicTaskType'))
     # 业务处理
     if taskno:
-        ServiceOperate().forwardPublicTaskService(b_token, public_TaskType, username, taskno)
+        forwardPublicTaskService = ServiceOperate().forwardPublicTaskService(b_token, public_TaskType, username, taskno)
+        if forwardPublicTaskService['responseCon'] != 'success':
+            returnParams['responseCon'] = forwardPublicTaskService['responseCon']
     elif tasknumber:
         timeNow = str(time.time())[-5:]  # 时间戳后5位
         for f in range(1,int(tasknumber)+1):
             # 若不足5位数，前面补0拼凑成5位数
             tasknumber = str(f).zfill(5)
             tasknumber = str(timeNow) + tasknumber
-            ServiceOperate().forwardPublicTaskService(b_token, public_TaskType, username, tasknumber)
-    return HttpResponse('Success!')
+            forwardPublicTaskService = ServiceOperate().forwardPublicTaskService(b_token, public_TaskType, username, tasknumber)
+            if forwardPublicTaskService['responseCon'] != 'success':
+                returnParams['responseCon'] = forwardPublicTaskService['responseCon']
+                return HttpResponse(str(returnParams['responseCon']))
+
+    return HttpResponse(str(returnParams['responseCon']))
 
 
 '''
 正向邀请任务
 '''
 def forwardInviteTask(request):
+    returnParams = {}
+    returnParams['responseCon'] = 'success'
+
     # 获取输入的用户名
     username = str.strip(request.GET.get('username'))
     # 获取输入的密码
@@ -123,14 +135,20 @@ def forwardInviteTask(request):
     invite_TaskType = str.strip(request.GET.get('inviteTaskType'))
     # 业务处理
     if taskno:
-        ServiceOperate().forwardInviteTaskService(b_token, invite_TaskType, username, taskno, mobile)
+        forwardInviteTaskService = ServiceOperate().forwardInviteTaskService(b_token, invite_TaskType, username, taskno, mobile)
+        if forwardInviteTaskService['responseCon'] != 'success':
+            returnParams['responseCon'] = forwardInviteTaskService['responseCon']
     elif tasknumber:
         timeNow = str(time.time())[-5:]    # 时间戳后5位
         for f in range(1,int(tasknumber)+1):
             tasknumber = str(f).zfill(5)
             tasknumber = str(timeNow) + tasknumber
-            ServiceOperate().forwardInviteTaskService(b_token, invite_TaskType, username, tasknumber, mobile)
-    return HttpResponse('Success!')
+            forwardInviteTaskService = ServiceOperate().forwardInviteTaskService(b_token, invite_TaskType, username, tasknumber, mobile)
+            if forwardInviteTaskService['responseCon'] != 'success':
+                returnParams['responseCon'] = forwardInviteTaskService['responseCon']
+                return HttpResponse(str(returnParams['responseCon']))
+
+    return HttpResponse(str(returnParams['responseCon']))
 
 
 '''
@@ -145,6 +163,8 @@ def queryUserName(request):
 生成B端待结算订单
 '''
 def createSettlementOrder(request):
+    returnParams = {}
+    returnParams['responseCon'] = 'success'
 
     # 获取输入的用户名
     username = str.strip(request.GET.get('username'))
@@ -163,21 +183,29 @@ def createSettlementOrder(request):
 
     # 业务处理
     if taskno:
-        ServiceOperate().createSettlementOrderService(b_token, settlementType, mobile, username, taskno)
+        createSettlementOrderService = ServiceOperate().createSettlementOrderService(b_token, settlementType, mobile, username, taskno)
+        if createSettlementOrderService['responseCon'] != 'success':
+            returnParams['responseCon'] = createSettlementOrderService['responseCon']
     elif tasknumber:
         timeNow = str(time.time())[-5:]  # 时间戳后5位
         for f in range(1,int(tasknumber)+1):
             tasknumber = str(f).zfill(5)
             tasknumber = str(timeNow) + tasknumber
-            ServiceOperate().createSettlementOrderService(b_token, settlementType, mobile, username, tasknumber)
-    return HttpResponse('Success!')
+            createSettlementOrderService = ServiceOperate().createSettlementOrderService(b_token, settlementType, mobile, username, tasknumber)
+            if createSettlementOrderService['responseCon'] != 'success':
+                returnParams['responseCon'] = createSettlementOrderService['responseCon']
+                return HttpResponse(str(returnParams['responseCon']))
+
+    return HttpResponse(str(returnParams['responseCon']))
 
 
 '''
 生成B端待验收订单
 '''
 def createAcceptanceOrder(request):
-    print('来了老哥验收')
+    returnParams = {}
+    returnParams['responseCon'] = 'success'
+
     # 获取输入的用户名
     username = str.strip(request.GET.get('username'))
     # 获取输入的密码
@@ -194,20 +222,28 @@ def createAcceptanceOrder(request):
     acceptanceType = str.strip(request.GET.get('acceptanceType'))
     # 业务处理
     if taskno:
-        ServiceOperate().createAcceptanceOrderService(b_token, acceptanceType, mobile, username, taskno)
+        createAcceptanceOrderService = ServiceOperate().createAcceptanceOrderService(b_token, acceptanceType, mobile, username, taskno)
+        if createAcceptanceOrderService['responseCon'] != 'success':
+            returnParams['responseCon'] = createAcceptanceOrderService['responseCon']
     elif tasknumber:
         timeNow = str(time.time())[-5:]  # 时间戳后5位
         for f in range(1,int(tasknumber)+1):
             tasknumber = str(f).zfill(5)
             tasknumber = str(timeNow) + tasknumber
-            ServiceOperate().createAcceptanceOrderService(b_token, acceptanceType, mobile, username, tasknumber)
-    return HttpResponse('Success!')
+            createAcceptanceOrderService = ServiceOperate().createAcceptanceOrderService(b_token, acceptanceType, mobile, username, tasknumber)
+            if createAcceptanceOrderService['responseCon'] != 'success':
+                returnParams['responseCon'] = createAcceptanceOrderService['responseCon']
+                return HttpResponse(str(returnParams['responseCon']))
+
+    return HttpResponse(str(returnParams['responseCon']))
 
 
 '''
 生成大V端待审核订单
 '''
 def createReviewOrder(request):
+    returnParams = {}
+    returnParams['responseCon'] = 'success'
 
     # 获取输入的用户名
     username = str.strip(request.GET.get('username'))
@@ -225,20 +261,28 @@ def createReviewOrder(request):
     reviewType = str.strip(request.GET.get('reviewType'))
     # 业务处理
     if taskno:
-        ServiceOperate().createReviewOrderService(b_token, reviewType, mobile, username, taskno)
+        createReviewOrderService = ServiceOperate().createReviewOrderService(b_token, reviewType, mobile, username, taskno)
+        if createReviewOrderService['responseCon'] != 'success':
+            returnParams['responseCon'] = createReviewOrderService['responseCon']
     elif tasknumber:
         timeNow = str(time.time())[-5:]  # 时间戳后5位
         for f in range(1,int(tasknumber)+1):
             tasknumber = str(f).zfill(5)
             tasknumber = str(timeNow) + tasknumber
-            ServiceOperate().createReviewOrderService(b_token, reviewType, mobile, username, tasknumber)
-    return HttpResponse('Success!')
+            createReviewOrderService = ServiceOperate().createReviewOrderService(b_token, reviewType, mobile, username, tasknumber)
+            if createReviewOrderService['responseCon'] != 'success':
+                returnParams['responseCon'] = createReviewOrderService['responseCon']
+                return HttpResponse(str(returnParams['responseCon']))
+
+    return HttpResponse(str(returnParams['responseCon']))
 
 
 '''
 生成大V端待支付订单
 '''
 def createPayOrder(request):
+    returnParams = {}
+    returnParams['responseCon'] = 'success'
 
     # 获取输入的用户名
     username = str.strip(request.GET.get('username'))
@@ -256,20 +300,28 @@ def createPayOrder(request):
     payType = str.strip(request.GET.get('payType'))
     # 业务处理
     if taskno:
-        ServiceOperate().createPayOrderService(b_token, payType, mobile, username, taskno)
+        createPayOrderService = ServiceOperate().createPayOrderService(b_token, payType, mobile, username, taskno)
+        if createPayOrderService['responseCon'] != 'success':
+            returnParams['responseCon'] = createPayOrderService['responseCon']
     elif tasknumber:
         timeNow = str(time.time())[-5:]  # 时间戳后5位
         for f in range(1,int(tasknumber)+1):
             tasknumber = str(f).zfill(5)
             tasknumber = str(timeNow) + tasknumber
-            ServiceOperate().createPayOrderService(b_token, payType, mobile, username, tasknumber)
-    return HttpResponse('Success!')
+            createPayOrderService = ServiceOperate().createPayOrderService(b_token, payType, mobile, username, tasknumber)
+            if createPayOrderService['responseCon'] != 'success':
+                returnParams['responseCon'] = createPayOrderService['responseCon']
+                return HttpResponse(str(returnParams['responseCon']))
+
+    return HttpResponse(str(returnParams['responseCon']))
 
 
 '''
 生成小V端待审核订单
 '''
 def createXvReviewOrder(request):
+    returnParams = {}
+    returnParams['responseCon'] = 'success'
 
     # 获取输入的用户名
     username = str.strip(request.GET.get('username'))
@@ -288,20 +340,28 @@ def createXvReviewOrder(request):
     # print(payType,mobile,username,tasknumber)
     # 业务处理
     if taskno:
-        ServiceOperate().createXvReviewOrderService(b_token, xvReviewType, mobile, username, taskno)
+        createXvReviewOrderService = ServiceOperate().createXvReviewOrderService(b_token, xvReviewType, mobile, username, taskno)
+        if createXvReviewOrderService['responseCon'] != 'success':
+            returnParams['responseCon'] = createXvReviewOrderService['responseCon']
     elif tasknumber:
         timeNow = str(time.time())[-5:]  # 时间戳后5位
         for f in range(1,int(tasknumber)+1):
             tasknumber = str(f).zfill(5)
             tasknumber = str(timeNow) + tasknumber
-            ServiceOperate().createXvReviewOrderService(b_token, xvReviewType, mobile, username, tasknumber)
-    return HttpResponse('Success!')
+            createXvReviewOrderService = ServiceOperate().createXvReviewOrderService(b_token, xvReviewType, mobile, username, tasknumber)
+            if createXvReviewOrderService['responseCon'] != 'success':
+                returnParams['responseCon'] = createXvReviewOrderService['responseCon']
+                return HttpResponse(str(returnParams['responseCon']))
+
+    return HttpResponse(str(returnParams['responseCon']))
 
 
 '''
 生成小V端待费用发放订单
 '''
 def createXvFeeIssueOrder(request):
+    returnParams = {}
+    returnParams['responseCon'] = 'success'
 
     # 获取输入的用户名
     username = str.strip(request.GET.get('username'))
@@ -320,11 +380,17 @@ def createXvFeeIssueOrder(request):
     # print(payType,mobile,username,tasknumber)
     # 业务处理
     if taskno:
-        ServiceOperate().createXvFeeIssueOrderService(b_token, xvFeeIssuType, mobile, username, taskno)
+        createXvFeeIssueOrderService = ServiceOperate().createXvFeeIssueOrderService(b_token, xvFeeIssuType, mobile, username, taskno)
+        if createXvFeeIssueOrderService['responseCon'] != 'success':
+            returnParams['responseCon'] = createXvFeeIssueOrderService['responseCon']
     elif tasknumber:
         timeNow = str(time.time())[-5:]  # 时间戳后5位
         for f in range(1,int(tasknumber)+1):
             tasknumber = str(f).zfill(5)
             tasknumber = str(timeNow) + tasknumber
-            ServiceOperate().createXvFeeIssueOrderService(b_token, xvFeeIssuType, mobile, username, tasknumber)
-    return HttpResponse('Success!')
+            createXvFeeIssueOrderService = ServiceOperate().createXvFeeIssueOrderService(b_token, xvFeeIssuType, mobile, username, tasknumber)
+            if createXvFeeIssueOrderService['responseCon'] != 'success':
+                returnParams['responseCon'] = createXvFeeIssueOrderService['responseCon']
+                return HttpResponse(str(returnParams['responseCon']))
+
+    return HttpResponse(str(returnParams['responseCon']))

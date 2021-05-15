@@ -60,6 +60,14 @@ class ForwardPublishTask():
         header['content-type'] = 'application/json'
         header['token'] = btoken
         response_params = requests.post(url, data=params_json, headers=header)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] = responseMsg
+        return returnParams
+
 
     '''
     正向-非全-app-公开抢单
@@ -111,6 +119,14 @@ class ForwardPublishTask():
         header['content-type'] = 'application/json'
         header['token'] = btoken
         response_params = requests.post(url, data=params_json, headers=header)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] = responseMsg
+        return returnParams
+
 
     '''
     正向-承揽-支付宝-公开抢单
@@ -163,6 +179,14 @@ class ForwardPublishTask():
         header['content-type'] = 'application/json'
         header['token'] = btoken
         response_params = requests.post(url, data=params_json, headers=header)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] = responseMsg
+        return returnParams
+
 
     '''
     正向-承揽-app-公开抢单
@@ -215,6 +239,14 @@ class ForwardPublishTask():
         header['content-type'] = 'application/json'
         header['token'] = btoken
         response_params = requests.post(url, data=params_json, headers=header)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] = responseMsg
+        return returnParams
+
 
     '''
     正向-临时个体-支付宝-公开抢单
@@ -267,3 +299,10 @@ class ForwardPublishTask():
         header['content-type'] = 'application/json'
         header['token'] = btoken
         response_params = requests.post(url, data=params_json, headers=header)
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+        responseCode = response_params.json()['code']
+        responseMsg = response_params.json()['msg']
+        if not responseCode or responseCode != '200' or responseMsg != '':
+            returnParams['responseCon'] = responseMsg
+        return returnParams

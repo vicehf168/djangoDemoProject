@@ -8,5 +8,13 @@ class CreateAcceptanceOrder():
     '''
 
     def createLgAcceptanceOrder(self,btoken,mobile,busername,tasknumber):
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+
         # 反向导入
         params = CreateCommonData().createLgPayOrder(btoken, mobile, busername, tasknumber)
+        if params['responseCon'] != 'success':
+            returnParams['responseCon'] = params['responseCon']
+            return returnParams
+
+        return returnParams

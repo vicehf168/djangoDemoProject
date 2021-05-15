@@ -42,3 +42,17 @@ if a:
     print('1')
 else:
     print('2')
+
+a = {}
+if a:
+    print('非空')
+
+a = '1'
+b = '1'
+if a is b:
+    print('相等')
+
+pa = {}
+pa['p'] = '1'
+pa['p'] = 2
+print(pa['p'])

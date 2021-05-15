@@ -8,8 +8,15 @@ class CreateSettlementOrder():
          2、验收生成待结算订单
     '''
     def CreateLgSettlementOrder(self,btoken,mobile,busername,tasknumber):
+        returnParams = {}
+        returnParams['responseCon'] = 'success'
+
         # 反向导入
         params = CreateCommonData().createLgPayOrder(btoken, mobile, busername, tasknumber)
+        if params['responseCon'] != 'success':
+            returnParams['responseCon'] = params['responseCon']
+            return returnParams
+
         '''
         获取以下接口所需的参数
         '''
@@ -19,7 +26,16 @@ class CreateSettlementOrder():
         name = params['name']
         bUserName = params['busername']
         taskTypeId = params['taskTypeId']
+        dvUserName = params['dvUserName']
         dvToken = params['dvToken']
+        xvToken = params['xvToken']
+        dvAllowAutoConfirm = params['dvAllowAutoConfirm']
+        xvAllowAutoConfirm = params['xvAllowAutoConfirm']
 
         # 验收（反向导入待验收的任务）
-        CreateCommonData().acceptance(btoken, taskName, mobile, name)
+        acceptance = CreateCommonData().acceptance(btoken, taskName, mobile, name)
+        if acceptance['responseCon'] != 'success':
+            returnParams['responseCon'] = acceptance['responseCon']
+            return returnParams
+
+        return returnParams

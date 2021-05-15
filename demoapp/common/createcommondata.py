@@ -75,7 +75,7 @@ class CreateCommonData():
         if not responseCode or responseCode != '200' or responseMsg != '':
             returnParams['responseCon'] = '反向导入接口： ' + responseMsg
             return returnParams
-        print('反向导入接口:       ',response_params.text)
+        # print('反向导入接口:       ',response_params.text)
 
         '''
         返回参数，用以后面的接口
@@ -148,7 +148,6 @@ class CreateCommonData():
         header['token'] = btoken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
-        print('B验收接口:       ', response_params.text)
         returnParams = {}
         returnParams['responseCon'] = 'success'
         responseCode = response_params.json()['code']
@@ -190,7 +189,6 @@ class CreateCommonData():
         header['token'] = btoken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
-        print('B结算接口:       ', response_params.text)
         returnParams = {}
         returnParams['responseCon'] = 'success'
         responseCode = response_params.json()['code']
@@ -226,7 +224,6 @@ class CreateCommonData():
         header['token'] = dvToken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
-        print('大V审核接口:       ', response_params.text)
         returnParams = {}
         returnParams['responseCon'] = 'success'
         responseCode = response_params.json()['code']
@@ -255,7 +252,6 @@ class CreateCommonData():
         header['token'] = dvToken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
-        print('大V支付前发短信接口:       ', response_params.text)
         returnParams = {}
         returnParams['responseCon'] = 'success'
         responseCode = response_params.json()['code']
@@ -300,7 +296,6 @@ class CreateCommonData():
         header['token'] = dvToken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
-        print('大V支付接口:       ', response_params.text)
         returnParams = {}
         returnParams['responseCon'] = 'success'
         responseCode = response_params.json()['code']
@@ -335,7 +330,6 @@ class CreateCommonData():
         header['token'] = xvToken
         header['content-type'] = 'application/json'
         response_params = requests.post(url, data=params_json, headers=header)
-        print('小V审核接口:       ', response_params.text)
         returnParams = {}
         returnParams['responseCon'] = 'success'
         responseCode = response_params.json()['code']

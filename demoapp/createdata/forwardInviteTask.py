@@ -8,7 +8,7 @@ class ForwardInviteTask():
     '''
     def fqAlipayInviteTask(self, btoken, busername, tasknumber, mobile):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
@@ -67,7 +67,7 @@ class ForwardInviteTask():
     '''
     def fqAppInviteTask(self, btoken, busername, tasknumber, mobile):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
@@ -126,7 +126,7 @@ class ForwardInviteTask():
     '''
     def clAlipayInviteTask(self, btoken, busername, tasknumber, mobile):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
@@ -186,7 +186,7 @@ class ForwardInviteTask():
     '''
     def clAppInviteTask(self, btoken, busername, tasknumber, mobile):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
@@ -246,7 +246,7 @@ class ForwardInviteTask():
     '''
     def lgAlipayInviteTask(self, btoken, busername, tasknumber, mobile):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天

@@ -25,7 +25,7 @@ class CreateCommonData():
     '''
     def createLgPayOrder(self, btoken, mobile, busername, tasknumber):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/settlement/importExcel'
+        url = 'https://interface/importExcel'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
@@ -133,7 +133,7 @@ class CreateCommonData():
     验收（反向导入待验收的任务）
     '''
     def acceptance(self, btoken, taskname, mobile, name):
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/order/taskCheckBeforeAcceptance'
+        url = 'https://interface/taskCheckBeforeAcceptance'
         params = {}
         params['acceptanceResult'] = 1
         params['appId'] = 'eplatform'
@@ -162,7 +162,7 @@ class CreateCommonData():
     B端结算
     '''
     def bSettlement(self, btoken, busername, taskName, taskTypeId):
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/settlement/applyWorkList'
+        url = 'https://interface/applyWorkList'
         # 获取开票信息
         invoiceData = getInvoice(busername)
         params = {}
@@ -203,7 +203,7 @@ class CreateCommonData():
     大V端审核成功
     '''
     def dvReview(self, bUserName, dvToken, taskName):
-        url = 'https://egate-uat.renliwo.com/egate/flabor/bill/orderInfo/reviewOrderInfo'
+        url = 'https://interface/reviewOrderInfo'
         orderInfo = getOrderInfo(taskName)
         corpBalance = getCorpAmount(bUserName)  # 公司账户余额
         params = {}
@@ -238,7 +238,7 @@ class CreateCommonData():
     支付前先发短信验证码
     '''
     def paySmsApply(self, dvToken, taskName):
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/settlement/applySmsCodeSend'
+        url = 'https://interface/applySmsCodeSend'
         params = {}
         params['appId'] = 'eplatform'
         params['orderNumberList'] = []
@@ -271,7 +271,7 @@ class CreateCommonData():
     大V支付
     '''
     def dvPayApply(self, taskName, busername, dvToken, bizNo):
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/settlement/applyPay'
+        url = 'https://interface/applyPay'
         params = {}
         params['appId'] = 'eplatform'
         params['bizNo'] = bizNo
@@ -309,7 +309,7 @@ class CreateCommonData():
     小V端审核成功
     '''
     def xvReview(self, dvUserName, xvToken, taskName):
-        url = 'https://egate-uat.renliwo.com/egate/flabor/bill/orderInfo/reviewOrderInfo'
+        url = 'https://interface/reviewOrderInfo'
         orderInfo = getOrderInfo(taskName)
         corpBalance = getCorpAmount(dvUserName)  # 公司账户余额
         params = {}

@@ -15,7 +15,7 @@ class FrontInit():
     获取B端登录token
     '''
     def b_login_token(self,username,password):
-        url = 'https://egate-uat.renliwo.com/egate/eplatform/login'
+        url = 'https://interface/login'
         params = {}
         params['appId'] = 'eplatform'
         params['username'] = username
@@ -32,7 +32,7 @@ class FrontInit():
     获取V端登录token
     '''
     def v_login_token(self, username, password):
-        url = 'https://egate-uat.renliwo.com/egate/eplatform/loginVendor'
+        url = 'https://interface/loginVendor'
         params = {}
         params['appId'] = 'eplatform'
         params['username'] = username

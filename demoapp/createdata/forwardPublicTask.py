@@ -8,7 +8,7 @@ class ForwardPublishTask():
     '''
     def fqAlipayPublicTask(self,btoken,busername,tasknumber):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
 
@@ -74,7 +74,7 @@ class ForwardPublishTask():
     '''
     def fqAppPublicTask(self,btoken,busername,tasknumber):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
@@ -133,7 +133,7 @@ class ForwardPublishTask():
     '''
     def clAlipayPublicTask(self,btoken,busername,tasknumber):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
@@ -193,7 +193,7 @@ class ForwardPublishTask():
     '''
     def clAppPublicTask(self,btoken,busername,tasknumber):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/task/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
@@ -253,7 +253,7 @@ class ForwardPublishTask():
     '''
     def lgAlipayPublicTask(self, btoken, busername, tasknumber):
         product_data_params = getProductData(busername)
-        url = 'https://egate-uat.renliwo.com/egate/flabor/task/publishTask'
+        url = 'https://interface/publishTask'
         # 定义当前时间
         currentTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         # 获取当前时间后一天
